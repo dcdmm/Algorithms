@@ -1,4 +1,4 @@
-# Algorithms
+# Algorithms(稳步更新)
 
 ## Python语言描述
 
