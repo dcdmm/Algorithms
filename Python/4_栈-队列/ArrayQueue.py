@@ -1,4 +1,3 @@
-
 # 队列是由一系列对象组合的集合,这些对象的插入和删除遵循先进先出(First in Frist out,FIFO)的原则
 
 class Empty(Exception):

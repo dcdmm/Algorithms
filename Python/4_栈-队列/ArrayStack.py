@@ -1,4 +1,3 @@
-
 # 栈是由一系列对象组合的一个集合,这些对象的插入和删除操作遵循后进先出(LIFO)的原则.
 
 
@@ -11,6 +10,7 @@ class Empty(Exception):
 
 class ArrayStack(object):
     """用Python列表作为储存实现一个栈"""
+
     def __init__(self):
         """Create an empty stack"""
         self._data = []
@@ -73,4 +73,3 @@ if __name__ == '__main__':
     mystack.pop()
     mystack.pop()
     mystack.pop()
-

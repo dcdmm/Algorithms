@@ -1,4 +1,3 @@
-
 """
 冒泡排序:
 * 稳定(不改变相同数字原有顺序)
@@ -13,7 +12,7 @@ def bubble_sort(lst):
             if lst[j] > lst[j + 1]:
                 temp = lst[j + 1]
                 lst[j + 1] = lst[j]
-                lst[j] = temp # 交换顺序
+                lst[j] = temp  # 交换顺序
     return lst
 
 

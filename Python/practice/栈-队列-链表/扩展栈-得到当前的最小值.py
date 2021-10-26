@@ -34,6 +34,7 @@ class ArrayStack(object):
 
 class MinStack(ArrayStack):
     """扩展栈的功能,得到栈中当前的最小值"""
+
     class NodeWithMin:  # 也可以使用元组,列表等数据类型代替
         def __init__(self, v, min_v):
             self._value = v

@@ -1,14 +1,14 @@
-
 def comb(nums, t):
     result = []
     tmp = []
     combHelper(result, tmp, nums, t, 0)
     return result
 
+
 def combHelper(result, tmp, nums, remains, start):
-    if remains < 0: # 该组合之和不等于该数字
+    if remains < 0:  # 该组合之和不等于该数字
         return
-    if remains == 0: # 该组合之和等于该数字
+    if remains == 0:  # 该组合之和等于该数字
         result.append(tmp[:])
     else:
         for i in range(start, len(nums)):

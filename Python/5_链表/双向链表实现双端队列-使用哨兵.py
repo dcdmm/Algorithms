@@ -1,4 +1,3 @@
-
 class Empty(Exception):
     """Error attempting to access an element from an empty container"""
     pass
@@ -46,6 +45,7 @@ class DoublyLindedBase:
         # 该节点与其他节点不必要的链接和储存元素将会被消除,从而帮助Python进行垃圾回收
         node._prev = node._pointer = node._element = None  # ★★★★★deprecate node
         return element
+
 
 # 在使用哨兵时,实现的关键时要记住队列的第一个元素并不存储头节点,
 # 而是储存在头节点后的第一个节点(假设双端队列时非空的).

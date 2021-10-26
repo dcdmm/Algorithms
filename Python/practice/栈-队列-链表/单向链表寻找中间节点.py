@@ -1,4 +1,3 @@
-
 class MyLindedList:
     class _Node:
         def __init__(self, element, pointer):

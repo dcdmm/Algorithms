@@ -1,4 +1,3 @@
-
 def delete_node(node):
     """单向链表删除node节点(已知node节点,间接进行删除)"""
     del_node = node._pointer

@@ -1,4 +1,3 @@
-
 class Empty(Exception):
     """Error attempting to access an element from an empty container"""
     pass
@@ -9,6 +8,7 @@ class CircularQueue:
         def __init__(self, element, pointer):  # initialize node's fields
             self._element = element  # reference to user's element
             self._pointer = pointer  # reference th next node
+
     # 简单的设置self._tail=self._tail._pointer,使原来的头部变成新的尾部
     # 对于循环链表,显然不需要同时保存指向头部和尾部的引用(指针).只要保存一个指向尾部的引用,就总能通过尾部的"pointer"引用找到头部
 

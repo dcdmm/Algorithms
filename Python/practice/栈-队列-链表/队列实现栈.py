@@ -4,6 +4,7 @@ class Empty(Exception):
 
 class LinkedQueue:
     """单向链表实现队列"""
+
     class _Node:
         def __init__(self, element, pointer):
             self._element, self._pointer = element, pointer
