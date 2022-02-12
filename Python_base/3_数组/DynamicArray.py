@@ -5,7 +5,7 @@ import ctypes
 
 
 class DynamicArray:
-    """A dynamic array akin to a simplified Python list"""
+    """A dynamic array akin to a simplified Python_base list"""
 
     def __init__(self):
         """Create an empty aray"""
