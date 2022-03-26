@@ -1,11 +1,10 @@
-# 给定一个字符串和需要替换的字符.列出所有(不同)的转换(需要替换字符大小写转换)可能
 """
-For example:
+# For example:
 
 sentence = "medium-one"
-Rule = "io"
+Rule = ['i', 'o']  # 要进行大小写替换的字符
 
-solutions = ["medium-one", "medIum-one", "medium-One", "medIum-One"]
+solutions = ["medium-one", "medIum-one", "medium-One", "medIum-One"]  # result
 """
 
 
@@ -49,7 +48,7 @@ if __name__ == '__main__':
     rule = 'abcd'  # 替换字符
     seq = list(rule) + list(rule.upper())  # 替换字符大写和小写组成的列表
 
-    example_sentence = "apple crazy better"  # 句子包含4个替换字符,故有2^4=16种替换可能(乘法公式)
+    example_sentence = "apple crazy better"  # 句子包含4个替换字符,故有2^4=16种替换可能
     length, example_re = len(example_sentence), example_sentence[::-1]
 
     max_index = 0  # 字符串中最后一个替换字符的位置

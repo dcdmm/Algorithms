@@ -41,9 +41,8 @@ class DoublyLindedBase:
         successor._prev = predecessor
         self._size -= 1
         element = node._element  # recode deleted element
-
-        # 该节点与其他节点不必要的链接和储存元素将会被消除,从而帮助Python进行垃圾回收
-        node._prev = node._pointer = node._element = None  # ★★★★★deprecate node
+        del node
+        
         return element
 
 

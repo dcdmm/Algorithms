@@ -1,4 +1,4 @@
-# 给一个n×n的数组,旋转90度
+# 将一个n×n的数组,旋转90度
 
 import numpy as np
 import copy
