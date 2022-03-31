@@ -1,11 +1,8 @@
 # 给一个m×n的矩阵,如果某个位置元素为0,则把该元素对应的行与列所有元素全部变成0
 
-import numpy as np
-
-
 def zero(matrix):
-    row = matrix.shape[0]
-    columns = matrix.shape[1]
+    row = len(matrix)
+    columns = len(matrix[0])
     m, n = [0] * row, [0] * columns
 
     for i in range(row):
@@ -22,12 +19,14 @@ def zero(matrix):
 
 
 if __name__ == '__main__':
-    arr = np.array([[1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 1, 0, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])
+    import numpy as np
 
-    print(arr, end='\n\n')
-    zero(arr)
-    print(arr)
+    matrix = [[1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+              [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
+    print(np.array(matrix), end='\n\n')
+    zero(matrix)
+    print(np.array(matrix))

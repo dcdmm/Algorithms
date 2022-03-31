@@ -1,4 +1,5 @@
 def generateParenthesis(n):
+    """所有可能的括号对"""
     result = []
 
     def generate(prefix, left, right):
@@ -14,4 +15,4 @@ def generateParenthesis(n):
 
 
 if __name__ == '__main__':
-    print(generateParenthesis(3))  # 所有可能的括号对
+    print(generateParenthesis(3))
