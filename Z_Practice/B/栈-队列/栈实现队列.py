@@ -7,7 +7,7 @@ class QueueWithTwoStacks:
     """使用两个栈来实现一个队列"""
 
     def __init__(self):
-        # 这里用list表示栈
+        # 这里使用list表示栈
         self.insertStack = []
         self.popStack = []
 
