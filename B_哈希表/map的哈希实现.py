@@ -57,6 +57,7 @@ class HashMapBase(MapBase, ABC):
         pass
 
 
+# 分类链表实现的具体哈希map类
 class ClainHashMap(HashMapBase):
     """Hash map implemented with separate chaining for collision resolution."""
 
@@ -68,9 +69,9 @@ class ClainHashMap(HashMapBase):
 
     def _bucket_setitem(self, j, k, v):
         if self._table[j] is None:
-            self._table[j] = SimpleMap()
+            self._table[j] = SimpleMap()  # 每个桶A[j]存储自身的二级容器
         oldsize = len(self._table[j])
-        self._table[j][j] = v
+        self._table[j][k] = v
         if len(self._table[j]) > oldsize:
             self._n += 1
 
@@ -83,5 +84,16 @@ class ClainHashMap(HashMapBase):
     def __iter__(self):
         for bucket in self._table:
             if bucket is not None:
-                for key in bucket:
-                    yield key
+                for (k, v) in bucket.items():  # 遍历二级容器(调用SimpleMa __iter__方法)
+                    yield k, v
+
+
+if __name__ == '__main__':
+    chm = ClainHashMap()
+    chm['a'] = 1
+    chm['b'] = 2
+    chm['c'] = 3
+    chm['b'] = -2
+    del chm['a']
+    for i in chm:
+        print(i)
