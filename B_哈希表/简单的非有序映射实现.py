@@ -1,4 +1,5 @@
-# 一个简单的基于list(非有序映射)的map实现
+# 一个用python列表作为非排序表的map实现方法
+
 """
 This list-based map implementation is simple, but it is not particularly efficient.
 Each of the fundamental methods, __getitem__, __setitem__, and __delitem__,
@@ -30,7 +31,7 @@ class UnsortedTable(MapBase):
             if k == item._key:
                 item._value = v
                 return
-            self._table.append(self._Item(k, v))
+        self._table.append(self._Item(k, v))
 
     def __delitem__(self, k):
         """Remove item associated with key k (raise KeyError if not found)."""
