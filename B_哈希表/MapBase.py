@@ -1,4 +1,4 @@
-from collections import MutableMapping  # 抽象基类
+from collections.abc import MutableMapping  # 抽象基类
 
 
 class MapBase(MutableMapping):
