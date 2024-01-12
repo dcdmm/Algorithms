@@ -149,8 +149,8 @@ if __name__ == '__main__':
     chm['c'] = 3
     chm['b'] = -2
     del chm['a']
-    for i in chm:
-        print(i)
+    for m in chm:
+        print(m)
 
     print('*' * 100)
 
@@ -160,5 +160,5 @@ if __name__ == '__main__':
     phm['c'] = 3
     phm['b'] = -2
     del phm['a']
-    for j in phm:
-        print(j)
+    for n in phm:
+        print(n)

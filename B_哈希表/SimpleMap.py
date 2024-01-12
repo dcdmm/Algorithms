@@ -57,5 +57,5 @@ if __name__ == '__main__':
     ut['a'] = -1
     del ut['b']
 
-    for (k, v) in ut.items():
-        print(k, v)
+    for (m, n) in ut.items():
+        print(m, n)
