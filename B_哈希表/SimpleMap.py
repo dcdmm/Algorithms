@@ -16,14 +16,14 @@ class SimpleMap(MapBase):
         """Create an empty map."""
         self._table = []
 
-    def __getitem__(self, k):
+    def __getitem__(self, k):  # 时间复杂度O(n)
         """Return value associated with key k (raise KeyError if not found)."""
         for item in self._table:  # 依赖for循环扫描列表中的元素
             if k == item._key:
                 return item._value
         raise KeyError('Key Error:' + repr(k))
 
-    def __setitem__(self, k, v):
+    def __setitem__(self, k, v):  # 时间复杂度O(n)
         """Assign value v to key k, overwriting existing value if present."""
         for item in self._table:
             if k == item._key:
@@ -31,7 +31,7 @@ class SimpleMap(MapBase):
                 return
         self._table.append(self._Item(k, v))
 
-    def __delitem__(self, k):
+    def __delitem__(self, k):  # 时间复杂度O(n)
         """Remove item associated with key k (raise KeyError if not found)."""
         for j in range(len(self._table)):
             if k == self._table[j]._key:
@@ -43,7 +43,7 @@ class SimpleMap(MapBase):
         """Return number of items in the map."""
         return len(self._table)
 
-    def __iter__(self):
+    def __iter__(self):  # 时间复杂度O(1)
         """Generate iteration of the map s keys."""
         for item in self._table:
             yield item._key
