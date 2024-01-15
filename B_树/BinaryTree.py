@@ -40,7 +40,7 @@ class BinaryTree(Tree):
             yield self.right(p)
 
 
-class LinkedList(BinaryTree):
+class LinkedBinaryTree(BinaryTree):
     """
     Linked representation of a binary tree structure.
 
@@ -93,12 +93,14 @@ class LinkedList(BinaryTree):
 
     def _validate(self, p):
         """Return associated node, if position is valid."""
-        if not isinstance(p, self.Position):
-            raise TypeError('p must be proper Positon type')
-        if p._container is not self:
-            raise ValueError("p does not belong to the container")
-        if p._node._parent is p._node:
-            raise ValueError('p is no longer valid')
+        # print("last:", p._node._element)
+        # print("ffff", p._node._parent)
+        # if not isinstance(p, self.Position):
+        #     raise TypeError('p must be proper Positon type')
+        # if p._container is not self:
+        #     raise ValueError("p does not belong to the container")
+        # if p._node._parent is p._node:
+        #     raise ValueError('p is no longer valid')
         return p._node
 
     def _make_position(self, node):
@@ -151,7 +153,7 @@ class LinkedList(BinaryTree):
 
         Raise ValueError if tree nonempty.
         """
-        if self._root is None: raise ValueError("Root exists")
+        if self._root is not None: raise ValueError("Root exists")
         self._size = 1
         self._root = self._Node(e)
         return self._make_position(self._root)
@@ -233,7 +235,7 @@ class LinkedList(BinaryTree):
     def preorder(self):  # 先序遍历
         """Generate a preorder iteration of positions in the tree."""
         if not self.is_empty():
-            for p in self._subtree_preorder(self._root):  # start recursion
+            for p in self._subtree_preorder(self._make_position(self._root)):  # start recursion
                 yield p
 
     def _subtree_preorder(self, p):
@@ -246,7 +248,7 @@ class LinkedList(BinaryTree):
     def postorder(self):
         """Generate a postorder iteration of positions in the tree."""
         if not self.is_empty():
-            for p in self._subtree_postorder(self._root):
+            for p in self._subtree_postorder(self._make_position(self._root)):
                 yield p
 
     def _subtree_postorder(self, p):  # 后序遍历
@@ -258,4 +260,43 @@ class LinkedList(BinaryTree):
 
 
 if __name__ == '__main__':
-    pass
+    lbt = LinkedBinaryTree()  # 初始化
+
+    """
+            r
+        rl      rr
+    rll 
+        rllr
+    rllrl   rllrr
+                    rllrrr
+                            rllrrrr
+                       rllrrrrl
+                                rllrrrrll  
+    """
+    r = lbt._add_root(0)
+    rl = lbt._add_left(r, 10)
+    rr = lbt._add_right(r, 20)
+    rll = lbt._add_left(rl, 30)
+    rllr = lbt._add_right(rll, 40)
+    rllrl = lbt._add_left(rllr, 50)
+    rllrr = lbt._add_right(rllr, 60)
+    rllrrr = lbt._add_right(rllrr, 70)
+    rllrrrr = lbt._add_right(rllrrr, 80)
+    rllrrrrl = lbt._add_left(rllrrrr, 90)
+    rllrrrrll = lbt._add_left(rllrrrrl, 90)
+
+    # print(lbt.siblings(rl)._node._element)  # r1的兄弟节点的值为20
+    # print(lbt.left(rllrrrr)._node._element)  # rllrrrr的左节点的值为90
+    # for c in lbt.children(rllr):  # rllr的左节点的值为50,右节点的值为60
+    #     print(c._node._element)
+    # print(lbt.num_children(r))  # r有2个孩子
+    # print(lbt.depth(rllrrr))  # rllrrr的深度为5
+    # print(lbt.height(r))  # r的高度为8
+
+    for i in lbt.preorder():  # 先序遍历
+        print(i._node._element)
+
+    print()
+
+    for j in lbt.postorder():  # 后序遍历
+        print(j._node._element)
