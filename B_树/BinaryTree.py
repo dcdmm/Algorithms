@@ -41,7 +41,30 @@ class BinaryTree(Tree):
 
 
 class LinkedList(BinaryTree):
-    """Linked representation of a binary tree structure."""
+    """
+    Linked representation of a binary tree structure.
+
+    二叉树链式存储结构实现方式性能:
+    len: O(1)
+    is_empty: O(1)
+    root: O(1)
+    parent: O(1)
+    left: O(1)
+    right: O(1)
+    sibling: O(1)
+    children: O(1)
+    num_children: O(1)
+    is_root: O(1)
+    is_leaf: O(1)
+    depth(p): O(d_p + 1)  # 其中d_p指的是树T中p节点的深度(最坏情况下为O(n),其中n是树中节点的总个数)
+    height: O(n) # 其中n是树中节点的总个数
+    _add_root: O(1)
+    _add_left: O(1)
+    _add_right: O(1)
+    _replace: O(1)
+    _delete: O(1)
+    _attach: O(1)
+    """
 
     class _Node:  # Lightweight, nonpublic class for storing a node.
         __slots__ = "_element", "_parent", "_left", "_right"
@@ -206,6 +229,32 @@ class LinkedList(BinaryTree):
             node._right = t2._root
             t2._root = None  # set t1 instance to empty
             t2._size = 0
+
+    def preorder(self):  # 先序遍历
+        """Generate a preorder iteration of positions in the tree."""
+        if not self.is_empty():
+            for p in self._subtree_preorder(self._root):  # start recursion
+                yield p
+
+    def _subtree_preorder(self, p):
+        """Generate a preorder iteration of positions in subtree rooted at p."""
+        yield p  # visit p before its subtrees
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):  # do preorder of c's subtree
+                yield other  # yielding each to our caller
+
+    def postorder(self):
+        """Generate a postorder iteration of positions in the tree."""
+        if not self.is_empty():
+            for p in self._subtree_postorder(self._root):
+                yield p
+
+    def _subtree_postorder(self, p):  # 后序遍历
+        """Generate a postorder iteration of positions in subtree rooted at p."""
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p  # visit p after its subtrees
 
 
 if __name__ == '__main__':
