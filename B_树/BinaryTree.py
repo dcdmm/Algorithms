@@ -235,7 +235,7 @@ class LinkedBinaryTree(BinaryTree):
     def preorder(self):  # 先序遍历
         """Generate a preorder iteration of positions in the tree."""
         if not self.is_empty():
-            for p in self._subtree_preorder(self._make_position(self._root)):  # start recursion
+            for p in self._subtree_preorder(self.root()):  # start recursion
                 yield p
 
     def _subtree_preorder(self, p):
@@ -248,7 +248,7 @@ class LinkedBinaryTree(BinaryTree):
     def postorder(self):
         """Generate a postorder iteration of positions in the tree."""
         if not self.is_empty():
-            for p in self._subtree_postorder(self._make_position(self._root)):
+            for p in self._subtree_postorder(self.root()):
                 yield p
 
     def _subtree_postorder(self, p):  # 后序遍历
@@ -258,11 +258,29 @@ class LinkedBinaryTree(BinaryTree):
                 yield other
         yield p  # visit p after its subtrees
 
+    def inorder(self):  # 中序遍历
+        """Generate an inorder iteration of positions in the tree."""
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
+        """Generate an inorder iteration of positions in subtree rooted at p."""
+        if self.left(p) is not None:  # if left child exists, traverse its subtree
+            for other in self._subtree_inorder(self.left(p)):
+                yield other
+
+        yield p  # visit p between its subtrees
+
+        if self.right(p) is not None:  # if right child exists, traverse its subtree
+            for other in self._subtree_inorder(self.right(p)):
+                yield other
 
 if __name__ == '__main__':
     lbt = LinkedBinaryTree()  # 初始化
 
     """
+    二叉树lbt结构如下:
             r
         rl      rr
     rll 
@@ -300,3 +318,8 @@ if __name__ == '__main__':
 
     for j in lbt.postorder():  # 后序遍历
         print(j._node._element)
+
+    print()
+
+    for k in lbt.inorder():  # 中序遍历
+        print(k._node._element)
