@@ -93,14 +93,12 @@ class LinkedBinaryTree(BinaryTree):
 
     def _validate(self, p):
         """Return associated node, if position is valid."""
-        # print("last:", p._node._element)
-        # print("ffff", p._node._parent)
-        # if not isinstance(p, self.Position):
-        #     raise TypeError('p must be proper Positon type')
-        # if p._container is not self:
-        #     raise ValueError("p does not belong to the container")
-        # if p._node._parent is p._node:
-        #     raise ValueError('p is no longer valid')
+        if not isinstance(p, self.Position):
+            raise TypeError('p must be proper Positon type')
+        if p._container is not self:
+            raise ValueError("p does not belong to the container")
+        if p._node._parent is p._node:
+            raise ValueError('p is no longer valid')
         return p._node
 
     def _make_position(self, node):
@@ -128,12 +126,12 @@ class LinkedBinaryTree(BinaryTree):
         return self._make_position(node._parent)
 
     def left(self, p):
-        """Return the Position of p s left child (or None if no left child)."""
+        """Return the Position of p's left child (or None if no left child)."""
         node = self._validate(p)
         return self._make_position(node._left)
 
     def right(self, p):
-        """Return the Position of p s right child (or None if no right child)."""
+        """Return the Position of p's right child (or None if no right child)."""
         node = self._validate(p)
         return self._make_position(node._right)
 
