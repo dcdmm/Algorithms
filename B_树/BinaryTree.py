@@ -40,6 +40,7 @@ class BinaryTree(Tree):
             yield self.right(p)
 
 
+# 二叉树
 class LinkedBinaryTree(BinaryTree):
     """
     Linked representation of a binary tree structure.
@@ -71,7 +72,7 @@ class LinkedBinaryTree(BinaryTree):
 
         def __init__(self, element, parent=None, left=None, right=None):
             self._element = element
-            self._parent = parent
+            self._parent = parent  # 该节点的父节点(可以双向遍历)
             self._left = left
             self._right = right
 

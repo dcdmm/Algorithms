@@ -25,6 +25,7 @@ class MapBase(MutableMapping):
             return self._key < other._key
 
 
+# 二叉搜索树
 class TreeMap(LinkedBinaryTree, MapBase):
     """
     Sorted map implementation using a binary search tree.
@@ -70,7 +71,7 @@ class TreeMap(LinkedBinaryTree, MapBase):
 
     def first(self):  # 时间复杂度:O(h),其中h为树的高度
         """返回一个包含最小键的节点,如果树为空,则返回None"""
-        return self._subtree_first_positon(self.root()) if len(self) > 0 else None
+        return self._subtree_first_positon(self.root()) if len(self) > 0 else None  # 从root开始找
 
     def last(self):  # 时间复杂度:O(h),其中h为树的高度
         """返回一个包含最大键的节点,如果树为空,则返回None"""
