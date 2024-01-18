@@ -6,7 +6,7 @@ class TreeNode:
 
 
 def binary_tree_by_list(data):
-    """从列表创建二叉树"""
+    """从列表(层序遍历得到)创建二叉树"""
     root = TreeNode(data[0])
     root_list = [root]
     i = 1
@@ -25,11 +25,16 @@ def binary_tree_by_list(data):
     return root
 
 if __name__ == '__main__':
-    list0 = [3, 9, 20, None, None, 15, 7]
+    # 根节点:1
+    # 第二层:2  2
+    # 第三层:3  5
+    # 第四层:4  4
+    list0 = [1, 2, 2, 3, None, None, 5, 4, None, None, 4]
+
     tree0 = binary_tree_by_list(list0)
     
     print(tree0.val)
-    print(tree0.left.val)
-    print(tree0.right.val)
-    print(tree0.right.left.val)
-    print(tree0.right.right.val)
+    print(tree0.left.val)  # print->2
+    print(tree0.right.val)  # print->2
+    print(tree0.left.left.left.val)  # print->4
+    print(tree0.right.right.right.val)  # print->4
