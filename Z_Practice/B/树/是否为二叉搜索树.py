@@ -1,28 +1,4 @@
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
-def binary_tree_by_list(data):
-    """从列表创建二叉树"""
-    root = TreeNode(data[0])
-    root_list = [root]
-    i = 1
-    while i < len(data):
-        current = root_list.pop(0)
-        if data[i] is not None:
-            current.left = TreeNode(data[i])
-            root_list.append(current.left)
-
-        i += 1
-
-        if i < len(data) and data[i] is not None:
-            current.right = TreeNode(data[i])
-            root_list.append(current.right)
-        i += 1
-    return root
+from utity import binary_tree_by_list
 
 
 pre = -float("inf")  # 负无穷大
